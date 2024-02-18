@@ -9,7 +9,7 @@ import { Suspense } from "react";
 import { RGBELoader } from "three-stdlib";
 
 import { useLoader } from "@react-three/fiber";
-import envMap from "../public/env/prueba2.hdr";
+
 export function Model({ url, scale, position, rotation }) {
   const { nodes, materials } = useGLTF(url);
 
