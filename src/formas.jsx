@@ -7,6 +7,7 @@ import { useEnvironment } from "@react-three/drei";
 import { useGLTF } from "@react-three/drei";
 import { Suspense } from "react";
 import { RGBELoader } from "three-stdlib";
+
 import { useLoader } from "@react-three/fiber";
 import envMap from "../public/env/prueba2.hdr";
 export function Model({ url, scale, position, rotation }) {
@@ -28,8 +29,8 @@ export function Model({ url, scale, position, rotation }) {
 }
 
 const Objeto = () => {
-  const env = useEnvironment({ files: "env/prueba2.hdr" });
-  const envirome = useLoader.preload(RGBELoader, env);
+  // const env = useEnvironment({ files: "env/prueba2.hdr" });
+  // const envirome = useLoader.preload(RGBELoader, env);
 
   return (
     <>
@@ -62,7 +63,18 @@ const Objeto = () => {
           <OrbitControls />
           <color args={["#080406"]} attach="background" />
           <Suspense fallback={null}>
-            <Environment map={envirome} blur={2} />
+            <Environment
+              files={[
+                "px.png",
+                "nx.png",
+                "py.png",
+                "ny.png",
+                "pz.png",
+                "nz.png",
+              ]}
+              path="env2/"
+              blur={2}
+            />
           </Suspense>
         </Canvas>
       </div>
@@ -78,13 +90,24 @@ const Objeto = () => {
             url={"/burbu.glb"}
             scale={[0.692, 0.606, 0.686]}
             position={[-3, 2, 0]}
-            rotation={[-0.043, -0.209, 0.047]}
+            rotation={[-0, 9, 10]}
           />
           <OrbitControls />
           <color args={["#080406"]} attach="background" />
           {/* <Environment preset="city" /> */}
           <Suspense fallback={null}>
-            <Environment map={envirome} blur={6} />
+            <Environment
+              files={[
+                "px.png",
+                "nx.png",
+                "py.png",
+                "ny.png",
+                "pz.png",
+                "nz.png",
+              ]}
+              path="env2/"
+              blur={6}
+            />
           </Suspense>
         </Canvas>
         <h2>cdsds</h2>
